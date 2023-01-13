@@ -69,6 +69,133 @@ class Router {
                 // Afficher le formulaire de la création d'un article
                 $controller->newArticle();
             }
+
+            else if ($action === 'sauverNouveau'){
+                // Sauvegarder un nouvel article
+                $controller->saveNewArticle($_POST);
+            }
+
+            else if ($action === 'modifier'){
+                if($articleId === null){
+                    $view->makeUnexpectedErrorPage();
+                }
+
+                else{
+                // afficher le formulaire de modification d'un article
+                $controller->modifyArticle($articleId);
+                }
+            }
+
+            else if ($action === 'sauverModification'){
+                // sauvegarder les modifications d'un article
+                if($articleId === null){
+                    $view->makeUnexpectedErrorPage();
+                }else{
+                    $controller->saveArticleModification($articleId, $_POST);
+                }
+
+            }
+            
+            else if ($action === 'supprimer') {
+                // supprimer un article
+                if($articleId === null){
+                    $view->makeUnexpectedErrorPage();
+                }else{
+                    $controller->deleteArticle($articleId);
+                }
+            } 
+            
+            else if ($action === 'confirmationSuppression') {
+                // afficher la page de confirmation de suppression
+                if($articleId === null){
+                    $view->makeUnexpectedErrorPage();
+                }else{
+                     $controller->askArticleDeletion($articleId);
+                }
+            } 
+            
+            else if ($action === 'about') {
+                // afficher la page à propos
+                $view->makeAboutPage();
+            } else {
+                // afficher la page d'erreur
+                if($articleId === null){
+                    $view->makeUnexpectedErrorPage();
+                }
+                
+                else{
+                    // afficher la page d'information d'un Articlee
+                     $controller->showInformation($articleId);
+                }
+            }
+        } else {
+            // afficher la page d'accueil
+            $view->makeHomePage();
         }
+
+        $view->render();
+    }
+
+
+    /* URL de la page d'accueil */
+    public function getHomeURL() {
+        return $this->direction . 'article.php';
+    }
+
+    /* URL de la page de l'affichage des listes des article */
+    public function getArticleListURL() {
+        return $this->direction . 'article.php/galerie';
+    }
+
+    /* URL de la page de l'Article d'identifiant $id */
+    function getArticleURL($id){
+        return  $this->direction . 'article.php/' . $id;
+    }
+
+    /* URL de la page pour la création  d'un Article */
+    function getArticleCreationURL(){
+        return $this->direction . 'article.php/nouveau';
+    }
+
+    /* URL de la page pour la sauvegarde de la création*/
+    function getArticleSaveURL(){
+        return $this->direction . 'article.php/sauverNouveau';
+    }
+
+    /* URL de la page d'édition d'un Article existant */
+    public function getArticleModifPageURL($id){
+        return $this->direction . 'article.php/' . $id . '/modifier';
+    }
+
+    /* URL d'enregistrement des modifications sur un
+	 * Article (champ 'action' du formulaire) */
+    public function updateModifiedArticle($id) {
+        return $this->direction . 'article.php/' . $id . '/sauverModification';
+    }
+
+    /* URL de la page supprimant effectivement l'Article*/
+    function getArticleDeletionURL($id){
+        return $this->direction . 'article.php/' . $id . '/supprimer';
+    }
+
+    /*  URL de la page demandant à l'internaute de confirmer son souhait de supprimer l'Article */
+    function getArticleAskDeletionURL($id){
+        return $this->direction . 'article.php/' . $id . '/confirmationSuppression';
+    }
+
+    /* URL de la page about */
+    function getAboutURL(){
+        return $this->direction . 'article.php/about';
+    }
+
+
+    /**
+     * Ajout d'une méthode POSTredirect qui envoie une réponse HTTP de type 303 See Other
+     * demandant au client de se rediriger vers l'URL passée en argument
+    */
+    public function POSTredirect($url,$feedback){
+        $_SESSION['feedback'] = $feedback;
+        header("Location: ".htmlspecialchars_decode($url),true,303);
+        die;
     }
 }
