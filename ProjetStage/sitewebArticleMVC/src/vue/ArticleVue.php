@@ -54,16 +54,17 @@ class ArticleVue {
      * Méthodes de génération de pages
      *******************************************************************/
     public function makeHomePage() {
-		$this->title = "Bienvenue dans le monde des articles" . "<br><br>";
-        $this->content = "<strong>Un article </strong> est un texte traitant d'un sujet particulier dans une revue ou un ouvrage en comportant plusieurs          éléments : <br>
+		$this->title = "<br>" . "Bienvenue dans le monde des articles" . "<br><br>";
+        $this->content = "<div><br><p><strong>Un article </strong> est un texte écrit qui traite d'un sujet ou d'une question d'intérêt général ou spécialisé. Il peut être publié dans différents supports tels que <strong>des journaux, des magazines, des sites internet, des blogs, </strong> etc. <br>Les articles peuvent couvrir une variété de sujets, comme <strong>l'actualité, la politique, les sciences, les technologies, les arts, les sports, la culture, la santé, l'éducation, </strong> etc.</p> <br></div>
+
+        Il existe différents types d'articles, tels que :
         <ul>
-            <li>Un article de journal ou de magazine présente des faits d’actualité ou un reportage.</li>
-            <li>Un article de presse est un texte de fond sur un sujet d’actualité.</li>
-            <li>Un article de dictionnaire est un texte qui donne la définition d’un mot.</li>
-            <li>Un article de loi est un texte qui définit une règle.</li>  
-            <li>Un article de blog est un texte qui présente un sujet d’actualité.</li>
-            <li> etc...</li>
-        </ul>";
+        <li>Les articles de fond qui analysent en profondeur un sujet ou une question d'actualité,</li><br>
+        <li>Les articles de revue qui font le point sur les dernières avancées dans un domaine spécifique,</li><br>
+        <li>Les articles de presse qui couvre l'actualité d'un événement ou d'une situation,</li><br>
+        <li>Les articles scientifiques qui présentent les résultats d'une recherche ou d'une expérience,</li><br>
+        <li>Les articles de blog qui sont généralement écrits par des personnes qui partagent leur expérience ou leur point de vue personnel sur un sujet donné.</li><br>
+        Dans tous les cas, un article est généralement organisé en paragraphes, avec une introduction qui expose le sujet, un développement qui détaille les idées et les arguments, et une conclusion qui résume les principales idées et apporte des perspectives pour la suite. Les articles sont généralement rédigés dans un style clair et concis, et sont destinés à un public spécifique, qui peut être large ou spécialisé.";
 	}
 
     /**
