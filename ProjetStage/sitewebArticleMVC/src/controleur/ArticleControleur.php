@@ -147,7 +147,7 @@ class ArticleControleur {
      * article
      * @param articleId l'id de l'article
      */
-    public function deleteArcticle($articleId){
+    public function deleteArticle($articleId){
         // On récupère l'article dans la base de données
         $article = $this->articleStorage->read($articleId);
         if($article === null){

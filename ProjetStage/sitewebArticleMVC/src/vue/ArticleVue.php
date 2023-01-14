@@ -42,10 +42,10 @@ class ArticleVue {
         $title = $this->title;
         $content = $this->content;
         $menu = array(
-            "Accueil" => $this->router->getAccueilURL(),
-            "Liste des articles" => $this->router->getListeArticleURL(),
-            "Nouvel article" => $this->router->getAjouterArticleURL(),
-            "A propos" => $this->router->getAProposURL()
+            "Accueil" => $this->router->getHomeURL(),
+            "Liste des articles" => $this->router->getArticleListURL(),
+            "Nouvel article" => $this->router->getArticleCreationURL(),
+            "A propos" => $this->router->getAboutURL()
         );
         include("Squelette.php");
     }
@@ -87,8 +87,8 @@ class ArticleVue {
         $s .= "<h3> Cet article a été créé par $auteurArt le $dateArt</h3>";
         $s .= "<p>$contenuArt</p>";
         $s .= "<ul>\n";
-        $s .= "<li><a href=\"".$this->router->getModifierArticleURL($id)."\">Modifier</a></li>\n";
-        $s .= "<li><a href=\"".$this->router->getSupprimerArticleURL($id)."\">Supprimer</a></li>\n";
+        $s .= "<li><a href=\"".$this->router->getArticleModifPageURL($id)."\">Modifier</a></li>\n";
+        $s .= "<li><a href=\"".$this->router->getArticleDeletionURL($id)."\">Supprimer</a></li>\n";
         $s .= "</ul>\n";
         $this->content = $s;
     }
