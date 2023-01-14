@@ -23,8 +23,10 @@ h1{
 
 div.texte {
 	text-align: center;
-	background-origin: padding-box;
-	background-color: red;
+	border-radius: 1em;
+	margin-left: 2em;
+	margin-right: 2em;
+	
 }
 
 .acceuil {

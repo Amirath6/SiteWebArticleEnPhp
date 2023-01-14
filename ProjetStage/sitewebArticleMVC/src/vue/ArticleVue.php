@@ -55,9 +55,9 @@ class ArticleVue {
      *******************************************************************/
     public function makeHomePage() {
 		$this->title = "<br>" . "Bienvenue dans le monde des articles" . "<br><br>";
-        $this->content = "<div><br><p><strong>Un article </strong> est un texte écrit qui traite d'un sujet ou d'une question d'intérêt général ou spécialisé. Il peut être publié dans différents supports tels que <strong>des journaux, des magazines, des sites internet, des blogs, </strong> etc. <br>Les articles peuvent couvrir une variété de sujets, comme <strong>l'actualité, la politique, les sciences, les technologies, les arts, les sports, la culture, la santé, l'éducation, </strong> etc.</p> <br></div>
+        $this->content = "<div><br><p style=\"text-align:center\"><strong style=\"color:red\">Un article </strong> est un texte écrit qui traite d'un sujet ou d'une question d'intérêt général ou spécialisé. Il peut être publié dans différents supports tels que <strong>des journaux, des magazines, des sites internet, des blogs, </strong> etc. <br>Les articles peuvent couvrir une variété de sujets, comme <strong>l'actualité, la politique, les sciences, les technologies, les arts, les sports, la culture, la santé, l'éducation, </strong> etc.</p> <br></div>
 
-        Il existe différents types d'articles, tels que :
+        <p style=\"margin-left:30px\">Il existe différents types d'articles, tels que : </p>
         <ul>
         <li>Les articles de fond qui analysent en profondeur un sujet ou une question d'actualité,</li><br>
         <li>Les articles de revue qui font le point sur les dernières avancées dans un domaine spécifique,</li><br>
@@ -175,7 +175,7 @@ class ArticleVue {
         $this->title = "Ajouter un article";
         $s = '<form action="'.$this->router->getArticleSaveURL().'" method="POST">' . "\n";
         $s .= self::getFormFields($builder);
-        $s .= "<button>Créer</button>";
+        $s .= "<p style=\"text-align:center; border-radius:1em\"><button>Créer</button></p>\n";
         $s .= "</form>\n";
         $this->content = $s;
     }
@@ -209,9 +209,9 @@ class ArticleVue {
         $article = self::htmlesc($a->getTitre());
 
         $this->title = "Suppression de l'article « {$article} »";
-        $this->content = "<p>L'article <strong> {$article} </strong> va être supprimé.</p>\n";
+        $this->content = "<br><p style=\"text-align:center\">L'article <strong style=\"color:red\"> {$article} </strong> va être supprimé.</p>\n";
         $this->content .= '<form action="' . $this->router->getArticleAskDeletionURL($id) . '" method="POST">' . "\n";
-        $this->content .= "<button>Confirmer</button>\n</form>\n";
+        $this->content .= "<br><p style=\"text-align:center\"><button>Confirmer</button></p>\n</form>\n";
     }   
 
     /**
@@ -232,7 +232,7 @@ class ArticleVue {
 
         $this->content = '<form action="' . $this->router->updateModifiedArticle($id) . '" method="POST">' . "\n";
         $this->content .= self::getFormFields($builder);
-        $this->content .= '<button>Modifier</button>' . "\n";
+        $this->content .= '<p style="text-align:center"><button>Modifier</button></p>' . "\n";
         $this->content .= '</form>' . "\n";
     }
 
@@ -256,38 +256,28 @@ class ArticleVue {
     /* Définition de la function makeAboutPage() */
     public function makeAboutPage() {
         $this->title = "A propos";
-        $this->content = "<strong><u>Nom de L'étudiant</u> : OROU-GUIDOU</strong><br><br>";
-        $this->content .= "<strong><u>Prénom de L'étudiant</u> : Amirath Fara</strong><br><br>";
-        $this->content .= "<strong><u>Numéro de l'étudiant</u> : 22012235</strong><br><br>";
+        $this->content = "<strong><u>Nom du stagiaire</u> : OROU-GUIDOU</strong><br><br>";
+        $this->content .= "<strong><u>Prénom du stagiaire</u> : Amirath Fara</strong><br><br>";
         $this->content .= "<strong><u>Diplôme</u> : Licence 3 Informatique</strong><br><br>";
-        $this->content .= "<strong><u>Groupe TD/TP</u> : 2B</strong><br>";
-        $this->content .= "<p>Le but de ce site est de gérer des objets en PHP(ici les informations sur les Articlees ou la description d'un Articlee, son nom , date de naissance, son genre de musique l'année de début de sa carrière
-        ...) et de créer un site respectant le modèle MVCR vu en cours et en TP.<br> J'ai intégrer les fonctionnalités suivantes :</p>";
+        $this->content .= "<p>Le but de ce site web est de gérer des objets en PHP(ici les informations sur les articles ou la description d'un article, le titre, le contenu, l'auteur et la date de création de l'article, et de créer un site respectant le modèle MVC .<br> J'ai intégrer les fonctionnalités suivantes :</p>";
         $this->content .= "<ul>";
-        $this->content .= "<li>La Liste des Articlees</li>";
-        $this->content .= "<li>Création d'un Articlee</li>";
-        $this->content .= "<li>Modification d'un Articlee</li>";
-        $this->content .= "<li>Utilisation d'un builder pour la validation et la création d'un objet</li>";
-        $this->content .= "<li>Suppression d'un Articlee</li>";
+        $this->content .= "<li>La Liste des articles</li>";
+        $this->content .= "<li>Création d'un article</li>";
+        $this->content .= "<li>Modification d'un article</li>";
+        $this->content .= "<li>Utilisation d'un builder pour la validation et la création d'un article</li>";
+        $this->content .= "<li>Suppression d'un article</li>";
         $this->content .= "<li>Redirection POST après creation/modification/suppression réussite ou echouer avec un message feedback(gestion du feedback)</li>";
         $this->content .= "<li>Utilisation d'une base de donnée MySql</li>";
         $this->content .= "</ul>";
 
-        $this->content.= "<br><br>";
-        $this->content .= "<strong><u>Optionnels réalisés</u> :</strong><br>";
+        $this->content .= "<p>Le site web est responsive et il est compatible avec les navigateurs suivants :</p>";
         $this->content .= "<ul>";
-        $this->content .= "<li>Routage via le chemin virtuel (PATH_INFO) dans les URL plutôt qu'avec des paramètres d'URL</li>";
-        $this->content .= "<li>En plus de l'optionnel du path info j'ai aussi fait l'optionnel : possibilité de filtrer la liste des objets via un champ de recherche</li>";
-
+        $this->content .= "<li>Google Chrome</li>";
+        $this->content .= "<li>Mozilla Firefox</li>";
+        $this->content .= "<li>Microsoft Edge</li>";
+        $this->content .= "<li>Opera</li>";
+        $this->content .= "<li>Safari</li>";
         $this->content .= "</ul>";
-
-        $this->content .= "<u>Notes :</u><br><br>";
-        $this->content .= "Par rapport aux optionnels je voulais aussi faire celui de upload d'image mais je n'ai pas réussi à le faire.<br>
-        J'ai essayé mais j'ai pas pu le faire fonctionner.<br> Mais par rapport à l'ajout d'un Articlee au niveau de l'image, j'arrive à ajouter l'image mais les images qu'il faut mettre même si cela va être télécharger 
-        sur internet doit être dans le dossier images dans le répertoire <strong><u>dm-tw4b-2022/filrougeArticlee/exoMVCR/images</u></strong> sinon cela ne fonctionne pas.<br> J'ai aussi mis des images dans le dossier upload pour que vous puissiez tester.<br> 
-        Mais les images qui sont dans upload sont aussi dans le dossier images car quand j'envoi l'image de upload, l'image ne s'affiche pas parce qu'il ne retrouves pas le fichier dans la base.
-        <br><br>";
-
         $this->content .= "<p style=\"text-align:center\"><strong><u>MERCI</u></strong></p>";
 
     }
@@ -317,44 +307,44 @@ class ArticleVue {
         
         $titleref = $builder->getTitreRef();
         $s = "";
-        $s .= '<p><label>Titre : <input type="text" name="' . $titleref . '" value="';
+        $s .= '<br><p style="font-weight: bold; margin-left:20px"><label><u>Titre</u> : <input type="text" name="' . $titleref . '" value="';
         $s .= self::htmlesc($builder->getData($titleref));
         $s .= "\" placeholder='ex:City News' />";
         $err = $builder->getErrors($titleref);
         if($err !== null){
             $s .= '<span class="error">' . $err . '</span>';
         }
-        $s .= "</label></p>\n";
+        $s .= "</label></p><br>";
 
         $contenuref = $builder->getContenuRef();
-        $s .= '<p><label>Contenu de l\'article : <textarea cols="40" rows="5" name="' . $contenuref . '" placeholder="ex:City News est un magazine de presse écrite hebdomadaire, fondé en 1924 par le journaliste et écrivain américain Henry Luce....">';
+        $s .= '<p style="font-weight: bold; margin-left:20px"><label><u>Contenu de l\'article</u> : <textarea name="' . $contenuref . '" placeholder="ex:City News est un magazine de presse écrite hebdomadaire, fondé en 1924 par le journaliste et écrivain américain Henry Luce.....">';
         $s .= self::htmlesc($builder->getData($contenuref));
         $s .= "</textarea>";
         $err = $builder->getErrors($contenuref);
         if($err !== null){
             $s .= '<span class="error">' . $err . '</span>';
         }
-        $s .= "</label></p>\n";
+        $s .= "</label></p><br>";
 
         $auteurref = $builder->getAuteurRef();
-        $s .= '<p><label>Auteur : <input type="text" name="' . $auteurref . '" value="';
+        $s .= '<p style="font-weight: bold; margin-left:20px"><label><u>Auteur</u> : <input type="text" name="' . $auteurref . '" value="';
         $s .= self::htmlesc($builder->getData($auteurref));
         $s .= "\" placeholder='ex:John Doe' />";
         $err = $builder->getErrors($auteurref);
         if($err !== null){
             $s .= '<span class="error">' . $err . '</span>';
         }
-        $s .= "</label></p>\n";
+        $s .= "</label></p><br>";
 
         $dateref = $builder->getDateCreationRef();
-        $s .= '<p><label>Date de création : <input type="date" name="' . $dateref . '" value="';
+        $s .= '<p style="font-weight: bold; margin-left:20px"><label><u>Date de création</u> : <input type="date" name="' . $dateref . '" value="';
         $s .= self::htmlesc($builder->getData($dateref));
         $s .= "\" placeholder='ex:2021-12-31' />";
         $err = $builder->getErrors($dateref);
         if($err !== null){
             $s .= '<span class="error">' . $err . '</span>';
         }
-        $s .= "</label></p>\n";
+        $s .= "</label></p><br>";
 
         return $s;
     }

@@ -66,7 +66,6 @@ class ArticleBuilder {
      * @param $ref : référence du champ
     */
     public function getData($ref){
-        var_dump($this->data);
         return key_exists($ref, $this->data) ? $this->data[$ref] : '';
     }
 

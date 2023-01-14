@@ -185,7 +185,7 @@ class ArticleControleur {
      */
     public function modifyArticle($articleId){
 
-        if (key_exists($articleId, $this->modifierArticleBuilder)) {
+        if (isset($this->modifierArticleBuilder[$articleId])) {
             // Préparation de la page du formulaire
             $this->vue->makeArticleModifPage($articleId, $this->modifierArticleBuilder[$articleId]);
         }
