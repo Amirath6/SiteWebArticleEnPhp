@@ -18,7 +18,7 @@ require_once("vue/ArticleVue.php");
 
 class Router {
 
-    protected $direction = "/SiteWebArticleEnPhp/ProjetStage/sitewebArticleMVC/";
+    protected $direction = '/SiteWebArticleEnPhp/ProjetStage/sitewebArticleMVC/';
 
     public function main($articleStorage){
 
@@ -139,53 +139,53 @@ class Router {
 
     /* URL de la page d'accueil */
     public function getHomeURL() {
-        return $this->direction . 'article.php';
+        return $this->direction . 'articles.php';
     }
 
     /* URL de la page de l'affichage des listes des article */
     public function getArticleListURL() {
-        return $this->direction . 'article.php/galerie';
+        return $this->direction . 'articles.php/galerie';
     }
 
     /* URL de la page de l'Article d'identifiant $id */
     function getArticleURL($id){
-        return  $this->direction . 'article.php/' . $id;
+        return  $this->direction . 'articles.php/' . $id;
     }
 
     /* URL de la page pour la création  d'un Article */
     function getArticleCreationURL(){
-        return $this->direction . 'article.php/nouveau';
+        return $this->direction . 'articles.php/nouveau';
     }
 
     /* URL de la page pour la sauvegarde de la création*/
     function getArticleSaveURL(){
-        return $this->direction . 'article.php/sauverNouveau';
+        return $this->direction . 'articles.php/sauverNouveau';
     }
 
     /* URL de la page d'édition d'un Article existant */
     public function getArticleModifPageURL($id){
-        return $this->direction . 'article.php/' . $id . '/modifier';
+        return $this->direction . 'articles.php/' . $id . '/modifier';
     }
 
     /* URL d'enregistrement des modifications sur un
 	 * Article (champ 'action' du formulaire) */
     public function updateModifiedArticle($id) {
-        return $this->direction . 'article.php/' . $id . '/sauverModification';
+        return $this->direction . 'articles.php/' . $id . '/sauverModification';
     }
 
     /* URL de la page supprimant effectivement l'Article*/
     function getArticleDeletionURL($id){
-        return $this->direction . 'article.php/' . $id . '/supprimer';
+        return $this->direction . 'articles.php/' . $id . '/supprimer';
     }
 
     /*  URL de la page demandant à l'internaute de confirmer son souhait de supprimer l'Article */
     function getArticleAskDeletionURL($id){
-        return $this->direction . 'article.php/' . $id . '/confirmationSuppression';
+        return $this->direction . 'articles.php/' . $id . '/confirmationSuppression';
     }
 
     /* URL de la page about */
     function getAboutURL(){
-        return $this->direction . 'article.php/about';
+        return $this->direction . 'articles.php/about';
     }
 
 
