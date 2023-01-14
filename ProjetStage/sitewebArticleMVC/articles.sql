@@ -13,7 +13,7 @@ CREATE TABLE `articles` (
   `titre` varchar(255) NOT NULL,
   `contenu` text NOT NULL,
   `auteur` varchar(255) NOT NULL,
-  `date` datetime NOT NULL,
+  `dateCreation` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -24,4 +24,9 @@ CREATE TABLE `articles` (
 LOCK TABLES `articles` WRITE;
 /*!40000 ALTER TABLE `articles` DISABLE KEYS */;
 
-INSERT INTO `articles` VALUES ()
+INSERT INTO `articles` VALUES (1, "L'impact des réseaux sociaux sur la vie privée", 'resauxSociaux',  "John Doe", "2021-01-15");
+
+
+/*!40000 ALTER TABLE `articles` ENABLE KEYS */;
+UNLOCK TABLES;
+

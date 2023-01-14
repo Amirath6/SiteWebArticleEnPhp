@@ -21,6 +21,12 @@ h1{
 	box-shadow: 0.5px 0.5px 0.5px 5px #4ba63f;
 }
 
+div.texte {
+	text-align: center;
+	background-origin: padding-box;
+	background-color: red;
+}
+
 .acceuil {
 	text-align: center;
 	margin-left: 2em;
@@ -33,25 +39,6 @@ h1{
 	height: 280px;
 	width: 280px;
 	border-radius: 12em;
-}
-
-figure {
-	width:700px; 
-    height: 300px;
-	float: right;
-	text-align: center;
-	padding: 0em;
-	max-width: 900px;
-	position: relative;
-	right: 50px;
-	
-}
-
-figure .sample {
-	height: 300px;
-	margin: .5em;
-	background-repeat: no-repeat;
-	background-size: 200px 300px;
 }
 
 .menu ul {

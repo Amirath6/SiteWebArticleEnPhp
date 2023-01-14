@@ -79,19 +79,16 @@ class ArticleVue {
         $titleArt = self::htmlesc($article->getTitre());
         $contenuArt = self::htmlesc($article->getContenu());
         $auteurArt = self::htmlesc($article->getAuteur());
-        $dateArt = new DateTime(self::htmlesc($article->getDateCreation()));
+        $dateArt = new DateTime(self::htmlesc($article->getDateCreations()));
 
-        $this->title = "Un article : $titleArt";
+        $this->title = "<br><< {$titleArt} >>, par $auteurArt et publié le " . $dateArt->format("Y-m-d") . "<br><br>";
 
-        $s = "";
-        $s .= "<h2>Desscription de l'article</h2>";
-        $s .= "<h3> Cet article a été créé par $auteurArt le $dateArt</h3>";
-        $s .= "<p>$contenuArt</p>";
-        $s .= "<ul>\n";
-        $s .= "<li><a href=\"".$this->router->getArticleModifPageURL($id)."\">Modifier</a></li>\n";
-        $s .= "<li><a href=\"".$this->router->getArticleDeletionURL($id)."\">Supprimer</a></li>\n";
-        $s .= "</ul>\n";
-        $this->content = $s;
+        $this->content .= "<br><div class=\"texte\">$contenuArt</div>\n";
+
+        $this->content .= "<ul>\n";
+        $this->content .= "<li><a href=\"".$this->router->getArticleModifPageURL($id)."\">Modifier</a></li>\n";
+        $this->content .= "<li><a href=\"".$this->router->getArticleDeletionURL($id)."\">Supprimer</a></li>\n";
+        $this->content .= "</ul>\n";
     }
 
     /**
@@ -118,7 +115,7 @@ class ArticleVue {
         $this->content.= "</form>";
         $this->content .= "<p> Cliquer sur un article pour voir les détails.</p>\n";
         if ($error){
-            $this->content .= "<p style=\"text-align:center\">Aucun article ne correspond à votre recherche.</p>\n";
+            $this->content .= "<p style=\"text-align:center; font-weight: bold; color:white; background: crimson; border-radius: 1em; margin: 1em auto; max-width: 90%; padding: .5em; background-color:red\">Aucun article ne correspond à votre recherche.</p>\n";
         }
         else{
             $this->content .=  "<ul class =\"gallery\">\n";
@@ -305,7 +302,7 @@ class ArticleVue {
      */
     protected function galleryArticle($id, $a){
         $res = '<li><a href="' . $this->router->getArticleURL($id).'">';
-        $res .= '<h3>' . self::htmlesc($a->getArticle()). '</h3>';
+        $res .= '<h3>' . self::htmlesc($a->getTitre()). '</h3>';
         $res .= '</a></li>'."\n";
 		return $res;
     }

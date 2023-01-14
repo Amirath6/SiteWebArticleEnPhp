@@ -62,7 +62,7 @@ class Article {
      * Définition de la fonction getDateCreation()
      * @return dateCreation : date de création de l'article
      */
-    public function getDateCreation(){
+    public function getDateCreations(){
         return $this->dateCreation;
     }
 

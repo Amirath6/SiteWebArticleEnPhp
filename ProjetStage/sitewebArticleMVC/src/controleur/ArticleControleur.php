@@ -109,7 +109,7 @@ class ArticleControleur {
      */
     public function newArticle(){
 
-        if ($this->currentArticleBuilder == null) {
+        if ($this->currentArticleBuilder === null) {
             $this->currentArticleBuilder = new ArticleBuilder();
         }
         $this->vue->makeArticleCreationPage($this->currentArticleBuilder);
@@ -118,7 +118,7 @@ class ArticleControleur {
     /**
      * Définition de la fonction saveNewArticle pour la sauvegarde d'un 
      * nouvel article
-     * @param data les données de l'article
+     * @param $data les données de l'article
      */
     public function saveNewArticle($data){
         $this->currentArticleBuilder = new ArticleBuilder($data);
@@ -181,7 +181,7 @@ class ArticleControleur {
      * Définition de la fonction modifyArticle pour la modification d'un 
      * article
      * 
-     * @param articleId l'id de l'article
+     * @param $articleId l'id de l'article
      */
     public function modifyArticle($articleId){
 

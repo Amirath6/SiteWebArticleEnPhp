@@ -29,14 +29,14 @@ class ArticleStorageMySQL implements ArticleStorage {
     */
     public function create(Article $article){
         // Préparation de la requête
-        $requete = "INSERT INTO article (titre, contenu, auteur, dateCreation) VALUES (:titre, :contenu, :auteur, :dateCreation)";
+        $requete = 'INSERT INTO articles (titre, contenu, auteur, dateCreation) VALUES (:titre, :contenu, :auteur, :dateCreation)';
 
         // Exécution de la requête
         $statement = $this->database->prepare($requete);
-        $statement->bindValue(":titre", $article->getTitre(), PDO::PARAM_STR);
-        $statement->bindValue(":contenu", $article->getContenu(), PDO::PARAM_STR);
-        $statement->bindValue(":auteur", $article->getAuteur(), PDO::PARAM_STR);
-        $statement->bindValue(":dateCreation", $article->getDateCreation(), PDO::PARAM_STR);
+        $statement->bindValue(':titre', $article->getTitre(), PDO::PARAM_STR);
+        $statement->bindValue(':contenu', $article->getContenu(), PDO::PARAM_STR);
+        $statement->bindValue(':auteur', $article->getAuteur(), PDO::PARAM_STR);
+        $statement->bindValue(':dateCreation', $article->getDateCreations(), PDO::PARAM_STR);
         $statement->execute();
         return $this->database->lastInsertId();
     }
@@ -47,19 +47,19 @@ class ArticleStorageMySQL implements ArticleStorage {
     */
     public function read($id){
 
-        $requete = "SELECT * FROM article WHERE id = :id";
+        $requete = 'SELECT * FROM articles WHERE id=:id';
 
         // Préparation de la requête
         $statement = $this->database->prepare($requete);
 
         // Exécution du statement
-        $statement->execute(array(":id" => intval($id)));
+        $statement->execute(array(':id' => intval($id)));
 
         // utilisation classique du fetch
         $fetch = $statement->fetch(PDO::FETCH_ASSOC);
 
         if ($fetch){
-            return new Article($fetch["titre"], $fetch["contenu"], $fetch["auteur"], $fetch["dateCreation"]);
+            return new Article($fetch['titre'], $fetch['contenu'], $fetch['auteur'], $fetch['dateCreation']);
         }
         return null;
     }
@@ -68,13 +68,13 @@ class ArticleStorageMySQL implements ArticleStorage {
      * Définition de la fonction readAll qui permet de lire tous les articles
      */
     public function readAll(){
-        $requete = "SELECT * FROM article";
+        $requete = 'SELECT * FROM articles';
         $statement = $this->database->prepare($requete);
         $statement->execute();
         $fetchAll = $statement->fetchAll();
         $data = array();
         foreach($fetchAll as $key => $value){
-            $data[$value['id']] = new Article($value["titre"], $value["contenu"], $value["auteur"], $value["dateCreation"]);
+            $data[$value['id']] = new Article($value['titre'], $value['contenu'], $value['auteur'], $value['dateCreation']);
         }
         return $data;
     }
@@ -85,13 +85,13 @@ class ArticleStorageMySQL implements ArticleStorage {
      * @param article : article à mettre à jour
      */
     public function update($id, Article $article){
-        $requete = "UPDATE article SET titre = :titre, contenu = :contenu, auteur = :auteur, dateCreation = :dateCreation WHERE id = :id";
+        $requete = 'UPDATE articles SET titre = :titre, contenu = :contenu, auteur = :auteur, dateCreation = :dateCreation WHERE id = :id';
         $statement = $this->database->prepare($requete);
-        $statement->bindValue(":titre", $article->getTitre(), PDO::PARAM_STR);
-        $statement->bindValue(":contenu", $article->getContenu(), PDO::PARAM_STR);
-        $statement->bindValue(":auteur", $article->getAuteur(), PDO::PARAM_STR);
-        $statement->bindValue(":dateCreation", $article->getDateCreation(), PDO::PARAM_STR);
-        $statement->bindValue(":id", $id, PDO::PARAM_INT);
+        $statement->bindValue(':titre', $article->getTitre(), PDO::PARAM_STR);
+        $statement->bindValue(':contenu', $article->getContenu(), PDO::PARAM_STR);
+        $statement->bindValue(':auteur', $article->getAuteur(), PDO::PARAM_STR);
+        $statement->bindValue(':dateCreation', $article->getDateCreations(), PDO::PARAM_STR);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
         $statement->execute();
         return $statement->execute();
     }
@@ -101,9 +101,9 @@ class ArticleStorageMySQL implements ArticleStorage {
      * @param id : identifiant de l'article à supprimer
      */
     public function delete($id){
-        $requete = "DELETE FROM article WHERE id = :id";
+        $requete = 'DELETE FROM articles WHERE id = :id';
         $statement = $this->database->prepare($requete);
-        $statement->bindValue(":id", $id, PDO::PARAM_INT);
+        $statement->bindValue(':id', $id, PDO::PARAM_INT);
         return $statement->execute();
     }
 
@@ -112,7 +112,7 @@ class ArticleStorageMySQL implements ArticleStorage {
      * articles
      */
     public function deleteAll(){
-        $requete = "DELETE FROM article";
+        $requete = 'DELETE FROM articles';
         $statement = $this->database->prepare($requete);
         $statement->execute();
         return $this->database->lastInsertId();

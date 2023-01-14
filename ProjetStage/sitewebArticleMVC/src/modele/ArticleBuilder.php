@@ -24,13 +24,13 @@ class ArticleBuilder {
 
     /**
      * Constructeur de la classe ArticleBuilder
-     * @param data : données du formulaire
-     * @param errors : erreurs du formulaire
+     * @param $data : données du formulaire
+     * @param $errors : erreurs du formulaire
      */
 
-    public function __construct($data = null){
-        if ($data == null) {
-            $this->data = array(
+    public function __construct($data=null){
+        if($data === null) {
+            $data = array(
                 self::TITRE_REF => "",
                 self::CONTENU_REF => "",
                 self::AUTEUR_REF => "",
@@ -45,16 +45,15 @@ class ArticleBuilder {
      * Définition d'une fonction buildFromArticle() qui renvoie une nouvelle 
      * instance de la classe ArticleBuilder avec les données modifiables de     
      * l'article passé en paramètre        
-     * @param article 
+     * @param $article 
      */
     public static function buildFromArticle(Article $article){
-        $dataArticle = array(
-            self::TITRE_REF => $article->getTitre(),
-            self::CONTENU_REF => $article->getContenu(),
-            self::AUTEUR_REF => $article->getAuteur(),
-            self::DATE_CREATION_REF => $article->getDateCreation()
-        );
-        return new ArticleBuilder($dataArticle);
+        return new ArticleBuilder(array(
+            "titre" => $article->getTitre(),
+            "contenu" => $article->getContenu(),
+            "auteur" => $article->getAuteur(),
+            "dateCreation" => $article->getDateCreations(),
+        ));
     }
 
     /*************************************************************************
@@ -64,27 +63,23 @@ class ArticleBuilder {
     /**
      * Définition de la fonction getData() qui renvoie la valeur d'un champ en 
      * fonction de la référence passée en argument
-     * @param ref : référence du champ
+     * @param $ref : référence du champ
     */
     public function getData($ref){
+        var_dump($this->data);
         return key_exists($ref, $this->data) ? $this->data[$ref] : '';
     }
 
-    /**
-     * Définition de la fonction setData() qui permet de modifier la valeur d'un
-     * champ en fonction de la référence passée en argument
-     * @param ref : référence du champ
-     * @param value : valeur du champ
-     */
-    public function setData($ref, $value){
-        $this->data[$ref] = $value;
+
+    public function setData($ref, $str){
+        $this->data[$ref] = $str;
     }
 
     /**
      * Définition de la fonction getErrors() qui renvoie les erreurs associées 
      * au champ de la référence passée en argument ou null s'il n'y a pas 
      * d'erreur
-     * @param ref : référence de l'erreur
+     * @param $ref : référence de l'erreur
     */
     public function getErrors($ref){
         return key_exists($ref, $this->errors) ? $this->errors[$ref] : null;
