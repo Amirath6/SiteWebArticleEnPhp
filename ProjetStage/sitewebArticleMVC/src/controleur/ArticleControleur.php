@@ -145,7 +145,101 @@ class ArticleControleur {
     /**
      * Définition de la fonction deleteArticle pour la suppression d'un
      * article
+     * @param articleId l'id de l'article
      */
+    public function deleteArcticle($articleId){
+        // On récupère l'article dans la base de données
+        $article = $this->articleStorage->read($articleId);
+        if($article === null){
+            $this->vue->makeUnknownArticlePage();
+        }
+        else{
+            $this->vue->makeArticleDeletionPage($articleId, $article);
+        }
+    }
+
+    /**
+     * Définition de la fonction askArticleDeletion pour demander à 
+     * l'internaute de confirmer son souhait de supprimer l'article
+     * 
+     * @param articleId l'id de l'article
+     */
+    public function askArticleDeletion($articleId){
+        // L'utilisateur confirme vouloir supprimer l'article
+        $ok = $this->articleStorage->delete($articleId);
+        if(!$ok){
+            // L'article n'existe pas dans la base de données
+            $this->vue->makeUnknownArticlePage();
+        }
+        else{
+            // L'article a bien été supprimé
+            $this->vue->makeArticleDeletedPage();
+        }
+    }
+
+    /**
+     * Définition de la fonction modifyArticle pour la modification d'un 
+     * article
+     * 
+     * @param articleId l'id de l'article
+     */
+    public function modifyArticle($articleId){
+
+        if (key_exists($articleId, $this->modifierArticleBuilder)) {
+            // Préparation de la page du formulaire
+            $this->vue->makeArticleModifPage($articleId, $this->modifierArticleBuilder[$articleId]);
+        }
+        else{
+            // On recupère dans la base de données l'article à modifier
+            $a = $this->articleStorage->read($articleId);
+
+            if($a === null){
+                $this->vue->makeUnknownArticlePage();
+            }
+            else{
+                $builder = ArticleBuilder::buildFromArticle($a);
+                $this->vue->makeArticleModifPage($articleId, $builder);
+            }
+        }
+    }
+
+    /**
+     * Définition de la fonction saveArticleModification pour la sauvegarde 
+     * d'un article modifié
+     * 
+     * @param articleId l'id de l'article
+     * @param data les données de l'article
+     */
+    public function saveArticleModification($articleId, array $data){
+        // On recupère en base de données l'article à modifier
+        $article = $this->articleStorage->read($articleId);
+
+        if ($article === null){
+            $this->vue->makeUnknownArticlePage();
+        }
+        else{
+            // On construit un builder à partir des données de l'article
+            $builder = new ArticleBuilder($data);
+
+            //Validation des donnéees
+            if ($builder->isValid()){
+                $builder->updateArticle($article);
+                $ok = $this->articleStorage->update($articleId, $article);
+                if (!$ok){
+                    throw new Exception("Erreur lors de la mise à jour de l'article");
+                }
+
+                // On redirige vers la page de l'article
+                unset($this->modifierArticleBuilder[$articleId]);
+                $this->vue->displayArticleModifiedSuccess($articleId);
+            }
+            else{
+                $this->modifierArticleBuilder[$articleId] = $builder;
+                $this->vue->displayArticleModifiedFailure($articleId);
+            }
+        }
+    }
+
 
 
      
