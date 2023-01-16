@@ -22,10 +22,10 @@ class Article {
      * @param auteur : auteur de l'article
      * @param dateCreation : date de création de l'article
      */
-    public function __construct($titre, $contenuArticle, $auteur, $dateCreation)
+    public function __construct($titre, $contenu, $auteur, $dateCreation)
     {
         $this->titre = $titre;
-        $this->contenu = file_get_contents("texts/{$contenuArticle}.frg.html", true);
+        $this->contenu = $contenu;
         $this->auteur = $auteur;
         $this->dateCreation = $dateCreation;
     }

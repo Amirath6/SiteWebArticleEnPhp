@@ -77,12 +77,12 @@ class ArticleVue {
     public function makeArticlePage($id, Article $article){
 
         $titleArt = self::htmlesc($article->getTitre());
-        $contenuArt = self::htmlesc($article->getContenu());
+        $contenuArt = $article->getContenu();
         $auteurArt = self::htmlesc($article->getAuteur());
         $dateArt = new DateTime(self::htmlesc($article->getDateCreations()));
+        $this->title = "<br><p style=\"color:red\"><< {$titleArt} >></p>, par $auteurArt, créé le " . $dateArt->format("Y-m-d") . "<br><br>";
 
-        $this->title = "<br><< {$titleArt} >>, par $auteurArt et publié le " . $dateArt->format("Y-m-d") . "<br><br>";
-
+        $this->content .= "<br><h2><u style=\"color:blue; margin-left:100px;\">Description de l'article</u></h2>\n";
         $this->content .= "<br><div class=\"texte\">$contenuArt</div>\n";
 
         $this->content .= "<ul>\n";

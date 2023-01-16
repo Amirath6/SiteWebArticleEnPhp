@@ -24,7 +24,12 @@ CREATE TABLE `articles` (
 LOCK TABLES `articles` WRITE;
 /*!40000 ALTER TABLE `articles` DISABLE KEYS */;
 
-INSERT INTO `articles` VALUES (1, "L'impact des réseaux sociaux sur la vie privée", 'resauxSociaux',  "John Doe", "2021-01-15");
+INSERT INTO `articles` VALUES (1, "L'impact des réseaux sociaux sur la vie privée", "resauxSociaux",  "John Doe", "2021-01-15"),
+(2, "Les avantages de la méditation pour la santé mentale", "meditation", "Jane Smith", "2021-07-22"),
+(3, "Les avantages de la pratique régulière de l'exercice physique", "exercice_physique", "Michael Johnson", "2021-08-12"), 
+(4, "L'importance de la diversité et de l'inclusion dans les entreprises", "diversite_inclusion", "Sarah Lee", "2021-09-05"),
+(5, "Les conséquences environnementales de l'utilisation croissante des emballages jetables", "consequence_environnement", "David Green", "2021-10-15"),
+(6, "Les répercussions de la pandémie de COVID-19 sur l'éducation", "covid", "Sarah Thompson", "2020-04-01");
 
 
 /*!40000 ALTER TABLE `articles` ENABLE KEYS */;

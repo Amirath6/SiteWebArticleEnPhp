@@ -57,7 +57,6 @@ class ArticleStorageMySQL implements ArticleStorage {
 
         // utilisation classique du fetch
         $fetch = $statement->fetch(PDO::FETCH_ASSOC);
-
         if ($fetch){
             return new Article($fetch['titre'], $fetch['contenu'], $fetch['auteur'], $fetch['dateCreation']);
         }
