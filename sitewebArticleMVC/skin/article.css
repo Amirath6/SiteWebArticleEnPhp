@@ -1,0 +1,130 @@
+html {
+	overflow-y: scroll;
+}
+
+body {
+	max-width: em;
+	margin: auto;
+	background-repeat: no-repeat;
+	background-size: 50em 50em;
+	background-color: beige; 
+	
+}
+
+h1{
+	background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+	text-align: center;
+	margin-top: 2em;
+	border-radius: 12em;
+	margin-left: 2em;
+	margin-right: 2em;
+	box-shadow: 0.5px 0.5px 0.5px 5px #4ba63f;
+}
+
+.acceuil {
+	text-align: center;
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+.button1{
+	background-image: url("/SiteWebArticleEnPhp/ProjetStage/sitewebArticleMVC/images/gifi.gif");
+	border-radius: 12em;
+	padding: 16px 32px;
+	text-align: center;
+	display: inline-block;
+	grid-template-columns: 1fr 1fr 1fr;	
+	margin: 6px 2px;
+	margin-left: 350px;
+	cursor: pointer;
+	color: black; 
+	border: 2px solid #4CAF50;
+}
+
+.menu ul {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	justify-content: space-around;
+	border-radius: 4em;
+	background: linear-gradient(0.25turn, #3fa650, #ebf8e1, #f69d3c);
+	grid-template-columns: 1fr 1fr 1fr;
+	box-shadow: inset 0px 0px 1px 1px grey;
+	grid-gap: 5em;
+	margin: .5em;
+}
+
+
+.gallery {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	flex-flow: row wrap;
+	display: grid;
+	grid-template-columns: 2fr 2fr 2fr;	
+	text-align: center;
+	grid-gap: 30px;
+	width: 100px;
+	height: 20px;
+	border-radius: 10px;
+}
+
+.gallery a {
+	display: flex;
+	max-width: 20em;
+	border: 1px solid rgb(255, 0, 76);
+	text-decoration: none;
+	color: inherit;
+	padding: .8em;
+	align-items: center;
+	margin: .2em;
+	border-radius: 4em;
+}
+
+.gallery a:hover {
+	box-shadow: inset 0px 0px 1px 1px grey;
+	background-image: url("/SiteWebArticleEnPhp/ProjetStage/sitewebArticleMVC/images/gifi.gif");
+	
+}
+
+.gallery h3 {
+	margin: .5em;
+}
+
+.gallery .sample {
+	height: 2em;
+	width: 4em;
+}
+
+.button.info{
+	background-color: rgb(255, 0, 0);
+}
+
+form.no-border {
+	border-radius: 12px;
+	border: 1px linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+}
+
+input::invalid {
+	border: 1px solid red;
+}
+
+label .error {
+	color: red;
+	font-weight: bold;
+}
+
+.feedback {
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	background: crimson;
+	border-radius: 1em;
+	margin: 1em auto;
+	max-width: 90%;
+	padding: .5em;
+}
+
+
+
+
