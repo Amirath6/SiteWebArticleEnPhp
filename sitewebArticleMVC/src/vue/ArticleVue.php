@@ -5,10 +5,10 @@
  * @author OROU-GUIDOU  Amirath Fara
  * @version 1.0
  */
-
-require_once("src/Router.php");
-require_once("src/modele/ArticleBuilder.php");
-require_once("src/modele/Article.php");
+set_include_path("src/vue/ArticleVue.php");
+require_once('src/Router.php');
+require_once('src/modele/ArticleBuilder.php');
+require_once('src/modele/Article.php');
 
 class ArticleVue {
 

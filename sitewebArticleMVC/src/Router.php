@@ -10,11 +10,11 @@
  * @version 1.0
  */
 
-set_include_path("vue/ArticleVue.php");
-set_include_path("controleur/ArticleControleur.php");
+set_include_path("src/vue/ArticleVue.php");
+set_include_path("src/controleur/ArticleControleur.php");
 
-require_once("controleur/ArticleControleur.php");
-require_once("vue/ArticleVue.php");
+require_once("src/controleur/ArticleControleur.php");
+require_once("src/vue/ArticleVue.php");
 
 class Router {
 

@@ -8,7 +8,7 @@ set_include_path("./src");
 
 
 /* Inclusion des classes utilisées dans ce fichier */
-require_once("Router.php");
+require_once("src/Router.php");
 require_once("src/vue/ArticleVue.php");
 require_once("src/controleur/ArticleControleur.php");
 require_once("src/modele/ArticleStorage.php");
