@@ -107,14 +107,14 @@ class ArticleBuilder {
             $this->errors[self::TITRE_REF] = "Le titre de l'article est obligatoire";
         }
         else if (mb_strlen($this->data[self::TITRE_REF]) >= 70) {
-            $this->errors[self::TITRE_REF] = "Le titre de l'article doit comporter au moins 50 caractères";
+            $this->errors[self::TITRE_REF] = "Le titre de l'article doit comporter au moins 70 caractères";
         }
 
         if (!key_exists(self::CONTENU_REF, $this->data) || $this->data[self::CONTENU_REF] === '') {
             $this->errors[self::CONTENU_REF] = "Le contenu de l'article est obligatoire";
         }
         else if (mb_strlen($this->data[self::CONTENU_REF]) >= 4000) {
-            $this->errors[self::CONTENU_REF] = "Le contenu de l'article doit comporter au moins 2000 caractères";
+            $this->errors[self::CONTENU_REF] = "Le contenu de l'article doit comporter au moins 3000 caractères";
         }
 
         if (!key_exists(self::AUTEUR_REF, $this->data) || $this->data[self::AUTEUR_REF] === '') {

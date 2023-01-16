@@ -3,7 +3,7 @@
 <head>
 	<title><?php echo $title ?></title>
 	<meta charset="UTF-8" />
-	<link rel="stylesheet" href="/SiteWebArticleEnPhp/ProjetStage/sitewebArticleMVC/skin/article.css">
+	<link rel="stylesheet" href="/SiteWebArticleEnPhp/sitewebArticleMVC/skin/article.css">
 </head>
 <body>
 <nav class="menu">

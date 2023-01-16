@@ -18,7 +18,7 @@ require_once("vue/ArticleVue.php");
 
 class Router {
 
-    protected $direction = '/SiteWebArticleEnPhp/ProjetStage/sitewebArticleMVC/';
+    protected $direction = '/SiteWebArticleEnPhp/sitewebArticleMVC/';
 
     public function main($articleStorage){
 

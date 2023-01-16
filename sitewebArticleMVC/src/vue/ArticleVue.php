@@ -175,7 +175,7 @@ class ArticleVue {
         $this->title = "Ajouter un article";
         $s = '<form action="'.$this->router->getArticleSaveURL().'" method="POST">' . "\n";
         $s .= self::getFormFields($builder);
-        $s .= "<p style=\"text-align:center; border-radius:1em;background-image: url(\"/SiteWebArticleEnPhp/ProjetStage/sitewebArticleMVC/images/gifi.gif\")\"><button>Créer</button></p>\n";
+        $s .= "<p class=\"button1\"><button>Créer</button></p>\n";
         $s .= "</form>\n";
         $this->content = $s;
     }
@@ -211,7 +211,7 @@ class ArticleVue {
         $this->title = "Suppression de l'article « {$article} »";
         $this->content = "<br><p style=\"text-align:center\">L'article <strong style=\"color:red\"> {$article} </strong> va être supprimé.</p>\n";
         $this->content .= '<form action="' . $this->router->getArticleAskDeletionURL($id) . '" method="POST">' . "\n";
-        $this->content .= "<br><p style=\"text-align:center\"><button>Confirmer</button></p>\n</form>\n";
+        $this->content .= "<br><p class=\"button1\"><button>Confirmer</button></p>\n</form>\n";
     }   
 
     /**
@@ -232,7 +232,7 @@ class ArticleVue {
 
         $this->content = '<form action="' . $this->router->updateModifiedArticle($id) . '" method="POST">' . "\n";
         $this->content .= self::getFormFields($builder);
-        $this->content .= '<p style="text-align:center"><button>Modifier</button></p>' . "\n";
+        $this->content .= '<p class="button1"><button>Modifier</button></p>' . "\n";
         $this->content .= '</form>' . "\n";
     }
 
